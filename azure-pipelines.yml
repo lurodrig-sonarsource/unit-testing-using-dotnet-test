@@ -1,0 +1,37 @@
+azure-pipelines.yml
+trigger:
+- master
+
+variables:
+- name: system.debug
+  value: true 
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: 'unit-testing-using-dotnet-test.sln'
+    feedsToUse: 'select'
+
+- task: SonarQubePrepare@7
+  inputs:
+    SonarQube: 'https://lurodrig-sonarqube.ngrok.io'
+    scannerMode: 'dotnet'
+    projectKey: 'unit-testing-using-dotnet-test'
+    projectName: 'unit-testing-using-dotnet-test'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'unit-testing-using-dotnet-test.sln'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'tests/**/*.csproj'
+    arguments: '--collect "Code Coverage"' # This is all you need to add!
+
+- task: SonarQubeAnalyze@7
