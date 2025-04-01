@@ -17,7 +17,7 @@ steps:
   displayName: 'dotnet restore'
 - task: SonarQubePrepare@7
   inputs:
-    SonarQube: 'https://lurodrig-sonarqube.ngrok.io'
+    SonarQube: 'lurodrig-sonarqube.ngrok.io'
     scannerMode: 'dotnet'
     projectKey: 'unit-testing-using-dotnet-test'
     projectName: 'unit-testing-using-dotnet-test'
