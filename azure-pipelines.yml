@@ -1,4 +1,3 @@
-azure-pipelines.yml
 trigger:
 - master
 
@@ -15,23 +14,26 @@ steps:
     command: 'restore'
     projects: 'unit-testing-using-dotnet-test.sln'
     feedsToUse: 'select'
-
+  displayName: 'dotnet restore'
 - task: SonarQubePrepare@7
   inputs:
     SonarQube: 'https://lurodrig-sonarqube.ngrok.io'
     scannerMode: 'dotnet'
     projectKey: 'unit-testing-using-dotnet-test'
     projectName: 'unit-testing-using-dotnet-test'
+    extraProperties: 'sonar.verbose=true'
+  displayName: 'SonarQube Prepare'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: 'unit-testing-using-dotnet-test.sln'
+  displayName: 'dotnet build' 
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: 'tests/**/*.csproj'
     arguments: '--collect "Code Coverage"' # This is all you need to add!
-
+  displayName: 'dotnet test collecting code coverage (.NET built-in)'
 - task: SonarQubeAnalyze@7
