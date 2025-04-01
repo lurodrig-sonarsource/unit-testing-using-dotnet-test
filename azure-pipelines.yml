@@ -16,7 +16,7 @@ steps:
     feedsToUse: 'select'
   displayName: 'dotnet restore'
 
-- task: SonarQubePrepare@7
+- task: SonarQubePrepare@6
   inputs:
     SonarQube: 'lurodrig-sonarqube.ngrok.io'
     scannerMode: 'MSBuild'
