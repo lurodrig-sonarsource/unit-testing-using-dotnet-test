@@ -19,7 +19,7 @@ steps:
 - task: SonarQubePrepare@7
   inputs:
     SonarQube: 'lurodrig-sonarqube.ngrok.io'
-    scannerMode: 'dotnet'
+    scannerMode: 'MSBuild'
     projectKey: 'unit-testing-using-dotnet-test'
     projectName: 'unit-testing-using-dotnet-test'
     extraProperties: 'sonar.verbose=true'
