@@ -33,7 +33,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'tests/**/*.csproj'
+    projects: '*Tests/**/*.csproj'
     arguments: '--collect "Code Coverage"' # This is all you need to add!
   displayName: 'dotnet test collecting code coverage (.NET built-in)'
 - task: SonarQubeAnalyze@7
