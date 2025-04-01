@@ -15,6 +15,7 @@ steps:
     projects: 'unit-testing-using-dotnet-test.sln'
     feedsToUse: 'select'
   displayName: 'dotnet restore'
+
 - task: SonarQubePrepare@7
   inputs:
     SonarQube: 'lurodrig-sonarqube.ngrok.io'
@@ -22,6 +23,7 @@ steps:
     projectKey: 'unit-testing-using-dotnet-test'
     projectName: 'unit-testing-using-dotnet-test'
     extraProperties: 'sonar.verbose=true'
+    msBuildVersion: '6.2.0'
   displayName: 'SonarQube Prepare'
 
 - task: DotNetCoreCLI@2
