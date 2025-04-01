@@ -23,7 +23,7 @@ steps:
     projectKey: 'unit-testing-using-dotnet-test'
     projectName: 'unit-testing-using-dotnet-test'
     extraProperties: 'sonar.verbose=true'
-    msBuildVersion: '6.2.0'
+    msBuildVersion: '6.2.0.85879'
   displayName: 'SonarQube Prepare'
 
 - task: DotNetCoreCLI@2
