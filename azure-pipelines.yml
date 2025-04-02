@@ -32,7 +32,7 @@ steps:
         !**\TestableIO*.dll
         !**\*LeakTest*.dll
         !**\obj\**
-    searchFolder: '$(Build.SourcesDirectory)\**.Tests'
+    searchFolder: 'PrimeService.Tests'
     codeCoverageEnabled: true
     diagnosticsEnabled: true
 
