@@ -16,6 +16,12 @@ steps:
     feedsToUse: 'select'
   displayName: 'dotnet restore'
 
+- task: JavaToolInstaller@1
+  inputs:
+    versionSpec: '19'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
 - task: SonarQubePrepare@6
   inputs:
     SonarQube: 'lurodrig-sonarqube.ngrok.io'
@@ -40,4 +46,4 @@ steps:
   displayName: 'dotnet test collecting code coverage (.NET built-in)'
 - task: SonarQubeAnalyze@6
   inputs:
-    jdkversion: JAVA_HOME_19_X64
+    jdkversion: JAVA_HOME
