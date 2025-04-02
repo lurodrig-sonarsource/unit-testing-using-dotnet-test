@@ -16,7 +16,7 @@ steps:
     script: |
       curl -O -L https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip
       unzip OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip
-      export JAVA_HOME_19=$(pwd)/jdk-19.0.2+7
+      export JAVA_HOME=$(pwd)/jdk-19.0.2+7
       env
 
 - task: SonarQubePrepare@6
@@ -55,4 +55,4 @@ steps:
 
 - task: SonarQubeAnalyze@6
   inputs:
-    jdkversion: 'JAVA_HOME_19'
+    jdkversion: 'JAVA_HOME'
