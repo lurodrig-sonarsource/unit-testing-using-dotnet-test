@@ -20,7 +20,7 @@ steps:
   inputs:
     versionSpec: '19'
     jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
+    jdkSourceOption: 'AzureStorage'
 
 - task: SonarQubePrepare@6
   inputs:
