@@ -9,18 +9,25 @@ pool:
   vmImage: windows-latest
 
 steps:
-- task: DotNetCoreCLI@2
+- task: VSBuild@1
   inputs:
-    command: 'restore'
-    projects: 'unit-testing-using-dotnet-test.sln'
-    feedsToUse: 'select'
-  displayName: 'dotnet restore'
+   solution: 'unit-testing-using-dotnet-test.sln'
+   logFileVerbosity: 'detailed'
 
-- task: JavaToolInstaller@1
+- task: VSTest@2
   inputs:
-    versionSpec: '19'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'AzureStorage'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+        **\*test*.dll
+        !**\*Microsoft*.dll
+        !**\*testcentric*.dll
+        !**\*TestUtilities*.dll
+        !**\TestableIO*.dll
+        !**\*LeakTest*.dll
+        !**\obj\**
+    searchFolder: '$(Build.SourcesDirectory)\**.Tests'
+    codeCoverageEnabled: 'true'
+    diagnosticsEnabled: 'true'
 
 - task: SonarQubePrepare@6
   inputs:
@@ -32,18 +39,4 @@ steps:
     msBuildVersion: '6.2.0.85879'
   displayName: 'SonarQube Prepare'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: 'unit-testing-using-dotnet-test.sln'
-  displayName: 'dotnet build' 
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '*Tests/**/*.csproj'
-    arguments: '--collect "Code Coverage"' # This is all you need to add!
-  displayName: 'dotnet test collecting code coverage (.NET built-in)'
 - task: SonarQubeAnalyze@6
-  inputs:
-    jdkversion: JAVA_HOME
