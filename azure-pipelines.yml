@@ -12,6 +12,7 @@ steps:
 - task: VSBuild@1
   inputs:
    solution: 'unit-testing-using-dotnet-test.sln'
+   restoreNugetPackages: 'true'
    logFileVerbosity: 'detailed'
 
 - task: VSTest@2
