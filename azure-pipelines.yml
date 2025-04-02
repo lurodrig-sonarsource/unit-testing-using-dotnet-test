@@ -12,7 +12,7 @@ steps:
 - task: VSBuild@1
   inputs:
    solution: 'unit-testing-using-dotnet-test.sln'
-   restoreNugetPackages: 'true'
+   restoreNugetPackages: true
    logFileVerbosity: 'detailed'
 
 - task: VSTest@2
@@ -27,8 +27,8 @@ steps:
         !**\*LeakTest*.dll
         !**\obj\**
     searchFolder: '$(Build.SourcesDirectory)\**.Tests'
-    codeCoverageEnabled: 'true'
-    diagnosticsEnabled: 'true'
+    codeCoverageEnabled: true
+    diagnosticsEnabled: true
 
 - task: SonarQubePrepare@6
   inputs:
