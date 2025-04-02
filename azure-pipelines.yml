@@ -39,3 +39,5 @@ steps:
     arguments: '--collect "Code Coverage"' # This is all you need to add!
   displayName: 'dotnet test collecting code coverage (.NET built-in)'
 - task: SonarQubeAnalyze@6
+  inputs:
+    jdkversion: JAVA_HOME_19_X64
