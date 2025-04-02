@@ -24,7 +24,9 @@ steps:
     SonarQube: 'lurodrig-sonarqube.ngrok.io'
     projectKey: 'unit-testing-using-dotnet-test'
     projectName: 'unit-testing-using-dotnet-test'
-    extraProperties: 'sonar.verbose=true'
+    extraProperties: | 
+      sonar.verbose=true
+      sonar.java.jdkHome=/d/a/1/s/jdk-19.0.2+7
   displayName: 'SonarQube Prepare'
 
 - task: NuGetCommand@2
@@ -54,5 +56,3 @@ steps:
     diagnosticsEnabled: true
 
 - task: SonarQubeAnalyze@6
-  inputs:
-    jdkversion: 'JAVA_HOME'
