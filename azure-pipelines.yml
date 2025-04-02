@@ -10,6 +10,14 @@ pool:
 
 steps:
 
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'lurodrig-sonarqube.ngrok.io'
+    projectKey: 'unit-testing-using-dotnet-test'
+    projectName: 'unit-testing-using-dotnet-test'
+    extraProperties: 'sonar.verbose=true'
+  displayName: 'SonarQube Prepare'
+
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
@@ -35,13 +43,5 @@ steps:
     searchFolder: 'PrimeService.Tests'
     codeCoverageEnabled: true
     diagnosticsEnabled: true
-
-- task: SonarQubePrepare@6
-  inputs:
-    SonarQube: 'lurodrig-sonarqube.ngrok.io'
-    projectKey: 'unit-testing-using-dotnet-test'
-    projectName: 'unit-testing-using-dotnet-test'
-    extraProperties: 'sonar.verbose=true'
-  displayName: 'SonarQube Prepare'
 
 - task: SonarQubeAnalyze@6
