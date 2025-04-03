@@ -16,13 +16,14 @@ steps:
     script: |
       curl -O -L https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip
       pwd
-
+      ls -l
 - task: JavaToolInstaller@1
   inputs:
     versionSpec: "19"
     jdkArchitectureOption: x64
     jdkSourceOption: LocalDirectory
-    jdkFile: "/d/a/1/s/OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip"
+    jdkFile: '/d/a/1/s/OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip'
+    jdkDestinationDirectory: '/builds/binaries/externals'
 
 - task: SonarQubePrepare@6
   inputs:
@@ -31,7 +32,6 @@ steps:
     projectName: 'unit-testing-using-dotnet-test'
     extraProperties: | 
       sonar.verbose=true
-      sonar.java.jdkHome=/d/a/1/s/jdk-19.0.2+7
   displayName: 'SonarQube Prepare'
 
 - task: NuGetCommand@2
