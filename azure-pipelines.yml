@@ -15,14 +15,23 @@ steps:
     targetType: 'inline'
     script: |
       curl -O -L https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip
-      pwd
-      ls -l
+
+- task: CopyFiles@2
+  inputs:
+    Contents: 'OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: Java19
+  
 - task: JavaToolInstaller@1
   inputs:
     versionSpec: "19"
     jdkArchitectureOption: x64
     jdkSourceOption: LocalDirectory
-    jdkFile: '/d/a/1/s/OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip'
+    jdkFile: '$(Build.ArtifactStagingDirectory)/OpenJDK19U-jdk_x64_windows_hotspot_19.0.2_7.zip'
     jdkDestinationDirectory: '/builds/binaries/externals'
 
 - task: SonarQubePrepare@6
