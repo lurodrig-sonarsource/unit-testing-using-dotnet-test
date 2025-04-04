@@ -10,31 +10,7 @@ pool:
 
 steps:
 
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      curl -O -L https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.zip
-
-- task: CopyFiles@2
-  inputs:
-    Contents: 'jdk-19.0.2_windows-x64_bin.zip'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: Java19
-  
-- task: JavaToolInstaller@1
-  inputs:
-    versionSpec: "19"
-    jdkArchitectureOption: x64
-    jdkSourceOption: LocalDirectory
-    jdkFile: '$(Build.ArtifactStagingDirectory)/jdk-19.0.2_windows-x64_bin.zip'
-    jdkDestinationDirectory: '/builds/binaries/externals'
-
-- task: SonarQubePrepare@6
+- task: SonarQubePrepare@7
   inputs:
     SonarQube: 'lurodrig-sonarqube.ngrok.io'
     projectKey: 'unit-testing-using-dotnet-test'
@@ -53,7 +29,7 @@ steps:
   inputs:
    solution: 'unit-testing-using-dotnet-test.sln'
    logFileVerbosity: 'detailed'
-   vsVersion: '17.0'
+   vsVersion: 'latest'
 
 - task: VSTest@2
   inputs:
@@ -69,8 +45,6 @@ steps:
     searchFolder: 'PrimeService.Tests'
     codeCoverageEnabled: true
     diagnosticsEnabled: true
-    vsTestVersion: '17.0'
+    vsTestVersion: 'latest'
 
-- task: SonarQubeAnalyze@6
-  inputs:
-    jdkversion: 'JAVA_HOME'
+- task: SonarQubeAnalyze@7
