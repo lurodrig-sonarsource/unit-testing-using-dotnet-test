@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PrimeServiceDuplicate\PrimeService.csproj" />
+    <ProjectReference Include="..\PrimeServiceDuplicate\PrimeServiceDuplicate.csproj" />
   </ItemGroup>
 
 </Project>
