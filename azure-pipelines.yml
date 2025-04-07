@@ -10,33 +10,43 @@ pool:
   vmImage: windows-latest
 
 steps:
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'restore'
-    projects: 'unit-testing-using-dotnet-test.sln'
-    feedsToUse: 'select'
-  displayName: 'dotnet restore'
 
-- task: SonarQubePrepare@6
+- task: SonarQubePrepare@7
   inputs:
     SonarQube: 'lurodrig-sonarqube.ngrok.io'
-    scannerMode: 'MSBuild'
     projectKey: 'unit-testing-using-dotnet-test'
     projectName: 'unit-testing-using-dotnet-test'
-    extraProperties: 'sonar.verbose=true'
-    msBuildVersion: '6.2.0.85879'
+    extraProperties: | 
+      sonar.verbose=true
   displayName: 'SonarQube Prepare'
 
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   inputs:
-    command: 'build'
-    projects: 'unit-testing-using-dotnet-test.sln'
-  displayName: 'dotnet build' 
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
 
-- task: DotNetCoreCLI@2
+- task: VSBuild@1
   inputs:
-    command: 'test'
-    projects: '*Tests/**/*.csproj'
-    arguments: '--collect "Code Coverage"' # This is all you need to add!
-  displayName: 'dotnet test collecting code coverage (.NET built-in)'
-- task: SonarQubeAnalyze@6
+   solution: 'unit-testing-using-dotnet-test.sln'
+   logFileVerbosity: 'detailed'
+   vsVersion: 'latest'
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+        **\*test*.dll
+        !**\*Microsoft*.dll
+        !**\*testcentric*.dll
+        !**\*TestUtilities*.dll
+        !**\TestableIO*.dll
+        !**\*LeakTest*.dll
+        !**\obj\**
+    searchFolder: 'PrimeService.Tests'
+    codeCoverageEnabled: true
+    diagnosticsEnabled: true
+    vsTestVersion: 'latest'
+    otherConsoleOptions: '/collect:"Code Coverage;Format=Xml"'
+
+- task: SonarQubeAnalyze@7
