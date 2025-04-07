@@ -18,7 +18,7 @@ steps:
     projectName: 'unit-testing-using-dotnet-test'
     extraProperties: | 
       sonar.verbose=true
-      sonar.cfamily.vscoveragexml.reportsPath="D:\a\_temp\TestResults\"
+      sonar.cs.vscoveragexml.reportsPaths="D:\a\_temp\TestResults\"
   displayName: 'SonarQube Prepare'
 
 - task: NuGetCommand@2
