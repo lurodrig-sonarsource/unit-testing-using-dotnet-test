@@ -18,12 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\PrimeServiceDuplicate\PrimeServiceDuplicate.csproj" />
   </ItemGroup>
-
-  <ModulePaths>
-  <Exclude>
-   <ModulePath>.*Fabrikam.Math.UnitTest.dll</ModulePath>
-   <!-- Add more ModulePath nodes here. -->
-  </Exclude>
-</ModulePaths>
+  
 
 </Project>
