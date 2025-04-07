@@ -48,7 +48,7 @@ steps:
     codeCoverageEnabled: true
     diagnosticsEnabled: true
     vsTestVersion: 'latest'
-    otherConsoleOptions: '/Format=Xml'
+    otherConsoleOptions: 'Format=Xml'
 
 #- task: PublishCodeCoverageResults@2
 #  inputs:
