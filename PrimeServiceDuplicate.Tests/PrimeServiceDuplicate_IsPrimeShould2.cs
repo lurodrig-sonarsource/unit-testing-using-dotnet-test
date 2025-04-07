@@ -1,6 +1,7 @@
 ﻿using System;
 using PrimeDuplicate2.Services;
 using Xunit;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PrimeDuplicate2.UnitTests.Services
 {
