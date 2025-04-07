@@ -1,5 +1,6 @@
 trigger:
 - master
+- duplicate-test
 
 variables:
 - name: system.debug

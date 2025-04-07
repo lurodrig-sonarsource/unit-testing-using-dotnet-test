@@ -6,11 +6,11 @@ namespace Prime.UnitTests.Services
 {
     public class PrimeService_IsPrimeShould
     {
-        private readonly PrimeService _primeService;
+        private readonly PrimeService2 _primeService;
 
         public PrimeService_IsPrimeShould()
         {
-            _primeService = new PrimeService();
+            _primeService = new PrimeService2();
         }
 
         #region Sample_TestCode
