@@ -4,6 +4,7 @@ using Xunit;
 
 namespace PrimeDuplicate1.UnitTests.Services
 {
+    [ExcludeFromCodeCoverage]
     public class PrimeServiceDuplicate_IsPrimeShould1
     {
         private readonly PrimeServiceDuplicate1 _primeService;
@@ -18,7 +19,6 @@ namespace PrimeDuplicate1.UnitTests.Services
         [InlineData(-1)]
         [InlineData(0)]
         [InlineData(1)]
-        [Ignore()]
         public void IsPrime_ValuesLessThan2_ReturnFalse(int value)
         {
             var result = _primeService.IsPrime(value);
@@ -32,7 +32,6 @@ namespace PrimeDuplicate1.UnitTests.Services
         [InlineData(3)]
         [InlineData(5)]
         [InlineData(7)]
-        [Ignore()]
         public void IsPrime_PrimesLessThan10_ReturnTrue(int value)
         {
             var result = _primeService.IsPrime(value);
@@ -45,7 +44,6 @@ namespace PrimeDuplicate1.UnitTests.Services
         [InlineData(6)]
         [InlineData(8)]
         [InlineData(9)]
-        [Ignore()]
         public void IsPrime_NonPrimesLessThan10_ReturnFalse(int value)
         {
             var result = _primeService.IsPrime(value);

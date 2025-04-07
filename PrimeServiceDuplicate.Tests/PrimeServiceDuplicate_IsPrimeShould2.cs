@@ -4,6 +4,7 @@ using Xunit;
 
 namespace PrimeDuplicate2.UnitTests.Services
 {
+    [ExcludeFromCodeCoverage]
     public class PrimeServiceDuplicate_IsPrimeShould2
     {
         private readonly PrimeServiceDuplicate2 _primeService;
