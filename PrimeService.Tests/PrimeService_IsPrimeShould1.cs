@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Prime.UnitTests.Services
 {
-    public class PrimeService_IsPrimeShould
+    public class PrimeService_IsPrimeShould1
     {
         private readonly PrimeService1 _primeService;
 
