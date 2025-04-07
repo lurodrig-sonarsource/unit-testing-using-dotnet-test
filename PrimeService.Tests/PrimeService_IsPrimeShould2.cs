@@ -1,5 +1,5 @@
 ﻿using System;
-using Prime.Services;
+using Prime2.Services;
 using Xunit;
 
 namespace Prime2.UnitTests.Services

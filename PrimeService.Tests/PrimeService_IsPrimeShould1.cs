@@ -1,8 +1,8 @@
 ﻿using System;
-using Prime.Services;
+using Prime1.Services;
 using Xunit;
 
-namespace Prime.UnitTests.Services
+namespace Prime1.UnitTests.Services
 {
     public class PrimeService_IsPrimeShould1
     {
