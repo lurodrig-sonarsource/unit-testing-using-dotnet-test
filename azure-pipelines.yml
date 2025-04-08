@@ -22,6 +22,11 @@ steps:
        sonar.cs.vscoveragexml.reportsPaths=**/*.coveragexml,**/*.xml    
   displayName: 'SonarQube Prepare'
 
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
 
 - task: VSBuild@1
   inputs:
