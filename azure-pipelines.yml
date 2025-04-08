@@ -17,6 +17,7 @@ steps:
     projectKey: 'unit-testing-using-dotnet-test'
     projectName: 'unit-testing-using-dotnet-test'
     extraProperties: | 
+       sonar.sources=.
        sonar.verbose=true
        sonar.cs.vstest.reportsPaths=*.trx,**/*.trx,**/**/*.trx,$(Agent.TempDirectory)/*.trx,$(Agent.TempDirectory)**/*.trx 
        sonar.cs.vscoveragexml.reportsPaths=**/*.coveragexml,**/*.xml    
