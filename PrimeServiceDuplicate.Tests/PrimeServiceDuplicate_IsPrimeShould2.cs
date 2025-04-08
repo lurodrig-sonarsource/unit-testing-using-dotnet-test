@@ -1,11 +1,9 @@
 ﻿using System;
 using PrimeDuplicate2.Services;
 using Xunit;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PrimeDuplicate2.UnitTests.Services
 {
-    [ExcludeFromCodeCoverage]
     public class PrimeServiceDuplicate_IsPrimeShould2
     {
         private readonly PrimeServiceDuplicate2 _primeService;
