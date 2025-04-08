@@ -6,9 +6,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeService", "PrimeServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeService.Tests", "PrimeService.Tests\PrimeService.Tests.csproj", "{03E9DC65-59E2-4879-A7B4-A425CB1A5D88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeServiceDuplicate", "PrimeServiceDuplicate\PrimeServiceDuplicate.csproj", "{ECBEF089-4304-472F-9807-1FC91681C8F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeServiceDuplicate", "PrimeServiceDuplicate\PrimeServiceDuplicate.csproj", "{ECBEF089-4304-472F-9807-1FC91681C8F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeServiceDuplicate.Tests", "PrimeServiceDuplicate.Tests\PrimeServiceDuplicate.Tests.csproj", "{03E9DC65-59E2-4879-A7B4-A425CB1A5D88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeServiceDuplicate.Tests", "PrimeServiceDuplicate.Tests\PrimeServiceDuplicate.Tests.csproj", "{03E9DC65-59E2-4879-A7B4-A425CB1A5D89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
