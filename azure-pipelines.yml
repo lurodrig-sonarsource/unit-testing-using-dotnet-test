@@ -45,7 +45,7 @@ steps:
         !**\TestableIO*.dll
         !**\*LeakTest*.dll
         !**\obj\**
-    searchFolder: 'PrimeService.Tests,PrimeServiceDuplicate.Tests'
+    searchFolder: '$(System.DefaultWorkingDirectory)/**/PrimeService*.Tests/**'
     codeCoverageEnabled: true
     diagnosticsEnabled: true
     vsTestVersion: 'latest'
